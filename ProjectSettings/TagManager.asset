@@ -11,6 +11,7 @@ TagManager:
   - SuperiorEsquerdo
   - MeioEsquerdo
   - InferiorEsquerdo
+  - escudo
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!Eativado)
         {
             direcX = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.right * Time.deltaTime * direcX * speed);
+            transform.Translate(Vector3.right * Time.deltaTime * direcX * speed,Space.World);
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -224,7 +224,7 @@ public class PlayerBehaviour : MonoBehaviour
                 clone.transform.position = transform.position + new Vector3(0f, 0.4f);
                
                     switch(posicaoR)
-                        {
+                    {
                             case 0:                               
                         break;
                             case 45:

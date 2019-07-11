@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject mouse,Ecostasv;
+    [SerializeField] private GameObject mouse,Ecostasv,smoke_1;
     private GameObject clone,Ecostas;
     public static Vector3 cameraP; 
     private float direcX, speed,posicaoR;
@@ -36,20 +36,48 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void Vida()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (armadura!= 0)
         {
+            if (Input.GetKeyDown(KeyCode.Q))
+          {
+           
             armadura--;
-            print(armadura);
+            switch (armadura)
+            {
+                case 0:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);
+                break;
+                case 1:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,2.82f),Quaternion.identity),2);
+                break;
+                case 2:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,4f),Quaternion.identity),2);
+                break;
+            }
             animator.SetInteger("Armadura", armadura);
+          }
         }
+    if (armadura !=3 )
+    {
         if (Input.GetKeyDown(KeyCode.E)) 
-        {
+       {
             armadura++;
-            print(armadura);
+           switch (armadura)
+            {
+                case 1:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);
+                break;
+                case 2:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,2.82f),Quaternion.identity),2);
+                break;
+                case 3:
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,4f),Quaternion.identity),2);
+                break;
+            }
             animator.SetInteger("Armadura", armadura);
         }
-       
     }
+}
     void Movimento()
 {
     animator.SetFloat("direcX", direcX);

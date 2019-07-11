@@ -14,55 +14,55 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EsuperiorDireito
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EmeioDireito
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Ecima
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Eativado
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EcimaEsquerda
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EmeioEsquerda
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EsuperiorEsquerda
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Armadura
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -666,7 +666,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -2819,7 +2819,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -9009,13 +9009,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102996894902305038}
-    m_Position: {x: 816, y: 228, z: 0}
+    m_Position: {x: 780, y: 264, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102537944382308528}
-    m_Position: {x: 816, y: 948, z: 0}
+    m_Position: {x: 792, y: 936, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102802046271105954}
-    m_Position: {x: -2052, y: 912, z: 0}
+    m_Position: {x: -2076, y: 936, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102394047213652394}
     m_Position: {x: -2076, y: 240, z: 0}
@@ -9042,7 +9042,7 @@ AnimatorStateMachine:
     m_Position: {x: 3288, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102915963345944062}
-    m_Position: {x: 3276, y: 960, z: 0}
+    m_Position: {x: 3288, y: 972, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102211995954887336}
     m_Position: {x: 1944, y: 228, z: 0}

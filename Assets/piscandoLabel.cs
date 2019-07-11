@@ -25,7 +25,7 @@ public class piscandoLabel : MonoBehaviour
         if (Time.time >= tempo + 1.3f)
 
         {
-           SceneManager.LoadScene("Act1");
+           SceneManager.LoadScene("Menu");
         }
     }
 }

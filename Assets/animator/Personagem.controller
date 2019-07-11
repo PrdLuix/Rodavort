@@ -60,7 +60,7 @@ AnimatorController:
   - m_Name: Armadura
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 2
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
@@ -9075,7 +9075,7 @@ AnimatorStateMachine:
     m_Position: {x: 4344, y: 984, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102712949015370626}
-    m_Position: {x: 5724, y: 636, z: 0}
+    m_Position: {x: 5724, y: 576, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102201015343479412}
     m_Position: {x: 4344, y: 612, z: 0}

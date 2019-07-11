@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    // shield é a variavel que diferencia qual escudo ele está usando
+    // armadura diferencia a animação dos diferentes tipos de armadura na qual ele está usando
+    
 
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
     [SerializeField] private Animator animator;
@@ -18,19 +21,19 @@ public class PlayerBehaviour : MonoBehaviour
     
     void Vida()
     {
-        //primeiro escudo adquirido
-        /*
-        if (shield == 0 && armadura == 0)
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            armadura--;
+            print(armadura);
+            animator.SetInteger("Armadura", armadura);
+        }
+        if (Input.GetKeyDown(KeyCode.E)) 
         {
             armadura++;
-            Ecostas = Instantiate(Ecostasv);
-            EcostasAtivo = true;
+            print(armadura);
+            animator.SetInteger("Armadura", armadura);
         }
-        if (armadura == 0 && EcostasAtivo)
-        {
-            Destroy(this.Ecostas);
-            EcostasAtivo = false;
-        }*/
+       
     }
 
     void movimento()
@@ -270,6 +273,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
         // por enquanto
             shield = 0;
+          armadura = 0;
         // por enquanto
 
             cameraP = transform.position + new Vector3(0, 0, -10);

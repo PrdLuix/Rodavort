@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    // shield é a variavel que diferencia qual escudo ele está usando
-    // armadura diferencia a animação dos diferentes tipos de armadura na qual ele está usando
-    
-
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject mouse,Ecostasv;
     private GameObject clone,Ecostas;
-
     public static Vector3 cameraP; 
     private float direcX, speed,posicaoR;
     private int shield,armadura;
     private Vector2 Mouse;
     bool Eativado ,EAtivo,Einverso ,EcostasAtivo;
     
+    void Start()
+        {
+            shield = 0;
+            armadura = 0;
+            speed = 8;
+            Eativado = false;
+            EAtivo = false;
+        }
+    void Update()
+    {
+        MouseCamera();
+        Vida();
+        Movimento();
+        AnimEscudo();
+    }   
+    void MouseCamera(){
+     mouse.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, +10);
+     Mouse = mouse.transform.position - cameraP;
+     cameraP = transform.position + new Vector3(0, 0, -10);
+    }
     void Vida()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -35,15 +50,18 @@ public class PlayerBehaviour : MonoBehaviour
         }
        
     }
-
-    void movimento()
+    void Movimento()
+{
+    animator.SetFloat("direcX", direcX);
+    if (!Eativado)
+    {
+      direcX = Input.GetAxis("Horizontal");
+      transform.Translate(Vector3.right * Time.deltaTime * direcX * speed,Space.World);
+    }
+}
+    void AnimEscudo()
     {
 
-        if (!Eativado)
-        {
-            direcX = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.right * Time.deltaTime * direcX * speed,Space.World);
-        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Eativado = true;
@@ -52,9 +70,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (Eativado)
         {
             direcX = 0;
-            {
+           
             if (!EAtivo)
-             
+           {
                 clone = Instantiate(Escudos[shield], transform.position , Quaternion.identity);
                 EAtivo = true;
             }
@@ -268,36 +286,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         
     }
-        // Start is called before the first frame update
-        void Start()
-        {
-        // por enquanto
-            shield = 0;
-          armadura = 0;
-        // por enquanto
-
-            cameraP = transform.position + new Vector3(0, 0, -10);
-            speed = 8;
-            Eativado = false;
-            EAtivo = false;
-      
-        }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // mouse é a posição do mouse em relação a camera no spaço
-        mouse.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, +10);
-        Mouse = mouse.transform.position - cameraP;
-        // Mouse é a posição do mouse 
-        print(Mouse);
-        cameraP = transform.position + new Vector3(0, 0, -10);
-         Vida();
-      //  Ecostas.transform.position = transform.position + new Vector3(0f, 0.5f);
-        animator.SetFloat("direcX", direcX);
-        movimento();
-       
-    }   
+        
 }
 
 

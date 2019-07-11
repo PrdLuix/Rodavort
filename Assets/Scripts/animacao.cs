@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class animacao : MonoBehaviour
 {
+    [SerializeField] GameObject[] letras;
     private float porcentagem,speed;
     private bool inverter;
-   [SerializeField] GameObject[] letras;
-    
-
+  
     void Start()
     {
         speed = 0.1f;
         inverter = false;
         porcentagem = 0.5f;   
     }
+    void Update()
+    {
+       Animacao();     
+    }
     float Y(float speed , float porcentagem)
     {
         return speed*porcentagem*Time.deltaTime;
     }
- 
-    void Update()
+    void Animacao()
     {
-       
         if (!inverter)
         {
             porcentagem -= 0.1f;

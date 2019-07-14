@@ -15,17 +15,24 @@ public class piscandoLabel : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown && Time.time > 1.9f)
+        if(transform.tag != "escudo")
+        { 
+           if (Input.anyKeyDown && Time.time > 1.9f)
+           {
+              fundo.SetBool("carregandoScebe", true);
+            
+                tempo = Time.time;
+            
+           }
+           if (Time.time >= tempo + 1.3f)
+
+           {
+             SceneManager.LoadScene("Menu");
+           }
+        }
+         if(Input.GetKeyDown(KeyCode.Z) && transform.tag == "escudo")
         {
             fundo.SetBool("carregandoScebe", true);
-            
-            tempo = Time.time;
-            
-        }
-        if (Time.time >= tempo + 1.3f)
-
-        {
-           SceneManager.LoadScene("Menu");
         }
     }
 }

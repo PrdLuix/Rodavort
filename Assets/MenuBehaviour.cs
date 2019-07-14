@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehaviour : MonoBehaviour
 {
-    [SerializeField]GameObject blinkFade;
+    [SerializeField]GameObject blinkFade,arabesco,fundo;
     [SerializeField]Text S;
+    private Vector3 ajuste;
     private GameObject clone;
-    private bool ativo;
+    private bool ativo,apertado;
+    float tempo;
     private int index,start_p,credits_p,exit_p;
     
     void Start()
     {
+      ajuste = new Vector3(0,-0.5f);
       index = 0;
       start_p = 2;
+      fundo.SetActive(true);
       credits_p = 0;
       exit_p = -2;
       ativo = true;
@@ -25,23 +29,26 @@ public class MenuBehaviour : MonoBehaviour
     
     void Update()
     {
-    
-      if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown(KeyCode.W))
-      {
-        index--;   
-        Destroy(clone); 
-        if (index == -1)
-            index = 2;
-        ativo = false;
-      }
-      else if(Input.GetKeyDown(KeyCode.DownArrow)||Input.GetKeyDown(KeyCode.S))
-      {
-        index++;
-        if (index == 3)
-            index = 0;
-        Destroy(clone);
-        ativo = false;
-      }
+
+        if (!apertado)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                index--;
+                Destroy(clone);
+                if (index == -1)
+                    index = 2;
+                ativo = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                index++;
+                if (index == 3)
+                    index = 0;
+                Destroy(clone);
+                ativo = false;
+            }
+        }
       if (!ativo)
       {
          switch(index)
@@ -50,30 +57,38 @@ public class MenuBehaviour : MonoBehaviour
           ativo = true;
           break;
           case 0:
-         clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
+          clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
+          arabesco.transform.position = CreateV3(start_p)+ ajuste;
           goto case -1;
           case 1:
           clone = Instantiate(blinkFade, S.transform.position + CreateV3(credits_p),Quaternion.identity);
+          arabesco.transform.position = CreateV3(credits_p)+ ajuste;
           goto case -1;
           case 2:
-         clone = Instantiate(blinkFade, S.transform.position + CreateV3(exit_p),Quaternion.identity);
+          clone = Instantiate(blinkFade, S.transform.position + CreateV3(exit_p),Quaternion.identity);
+          arabesco.transform.position = CreateV3(exit_p) + ajuste;
           goto case -1;
         }
       }
-      if (Input.GetKeyDown(KeyCode.Z))
-      {   
-        switch(index)
+      if (Input.GetKeyDown(KeyCode.Z) || apertado)
       {
-          case 0:   
-           SceneManager.LoadScene("Act1");
+         if (!apertado) 
+         tempo = Time.time;
+         apertado = true;
+         switch (index)
+         {
+          case 0:
+           if (Time.time >= tempo + 1.3f)
+          SceneManager.LoadScene("Act1");
           break;
           case 1:
           print("creditos");
           break;
           case 2:
-          Application.Quit();
+          if (Time.time >= tempo + 1.3f)
+            Application.Quit();
           break;
-      }  
+         }  
     }
       
     }

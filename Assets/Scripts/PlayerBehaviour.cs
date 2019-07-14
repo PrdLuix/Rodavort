@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
+    [SerializeField] private Image[] canvas = new Image[4];
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject mouse,Ecostasv,smoke_1;
     private GameObject clone,Ecostas;
@@ -16,6 +18,11 @@ public class PlayerBehaviour : MonoBehaviour
     
     void Start()
         {
+            //NECESSÁRIO
+            for (int i = 1; i < canvas.Length; i++)
+            {
+              canvas[i].color = new Color(canvas[i].color.r, canvas[i].color.g, canvas[i].color.b, 0.5f);
+            }
             shield = 0;
             armadura = 0;
             speed = 8;
@@ -36,16 +43,25 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void Vida()
     {
+        //canvas
+        for (int i = 3; i != 0; i--)
+        {
+            if (i - 1 == armadura)
+                canvas[i].color = new Color(canvas[i].color.r, canvas[i].color.g, canvas[i].color.b, 0.5f);
+            if (i == armadura)
+                canvas[i].color = new Color(canvas[i].color.r, canvas[i].color.g, canvas[i].color.b, 1f);
+        }
         if (armadura!= 0)
         {
+
             if (Input.GetKeyDown(KeyCode.Q))
           {
-           
+                
             armadura--;
             switch (armadura)
             {
                 case 0:
-                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);
+                Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);                      
                 break;
                 case 1:
                 Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,2.82f),Quaternion.identity),2);

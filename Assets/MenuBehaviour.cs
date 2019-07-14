@@ -13,7 +13,8 @@ public class MenuBehaviour : MonoBehaviour
     private bool ativo,apertado;
     float tempo;
     private int index,start_p,credits_p,exit_p;
-    
+
+    private Vector3 CreateV3(float y)=> new Vector3(0,y);
     void Start()
     {
       ajuste = new Vector3(0,-0.5f);
@@ -25,7 +26,7 @@ public class MenuBehaviour : MonoBehaviour
       ativo = true;
       clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
     }
-    private Vector3 CreateV3(float y)=> new Vector3(0,y);
+  
     
     void Update()
     {
@@ -82,7 +83,7 @@ public class MenuBehaviour : MonoBehaviour
           SceneManager.LoadScene("Act1");
           break;
           case 1:
-          print("creditos");
+          SceneManager.LoadScene("Credits");
           break;
           case 2:
           if (Time.time >= tempo + 1.3f)

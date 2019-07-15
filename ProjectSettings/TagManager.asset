@@ -13,6 +13,7 @@ TagManager:
   - InferiorEsquerdo
   - escudo
   - Armadura
+  - ESCUDO1
   layers:
   - Default
   - TransparentFX

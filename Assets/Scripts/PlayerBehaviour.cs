@@ -8,11 +8,13 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
     [SerializeField] private Image[] canvas = new Image[4];
     [SerializeField] private Animator animator;
+    [SerializeField] private Image mao, segundo;
     [SerializeField] private GameObject mouse,Ecostasv,smoke_1;
+    private bool[] inventario = new bool[3];
     private GameObject clone,Ecostas;
     public static Vector3 cameraP; 
     private float direcX, speed,posicaoR;
-    private int shield,armadura;
+    private int shield, armadura;
     private Vector2 Mouse;
     bool Eativado ,EAtivo,Einverso ,EcostasAtivo;
     
@@ -23,19 +25,36 @@ public class PlayerBehaviour : MonoBehaviour
             {
               canvas[i].color = new Color(canvas[i].color.r, canvas[i].color.g, canvas[i].color.b, 0.5f);
             }
-            shield = 0;
+            inventario[0] = true;
+            shield = 1;
             armadura = 0;
             speed = 8;
             Eativado = false;
             EAtivo = false;
-        }
+            segundo.enabled = false;
+    }
     void Update()
     {
+        Iventario();
         MouseCamera();
         Vida();
         Movimento();
         AnimEscudo();
     }   
+    void Iventario()
+    {
+        if (inventario[1] && !Eativado)
+        {
+            if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                ScrollMouse();
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                ScrollMouse();
+            }
+        }
+    }
     void MouseCamera(){
      mouse.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, +10);
      Mouse = mouse.transform.position - cameraP;
@@ -330,7 +349,45 @@ public class PlayerBehaviour : MonoBehaviour
         }
         
     }
-        
+    void ScrollMouse()
+    {
+        switch (shield)
+        {
+            case 0:
+                shield = 1;
+                mao.enabled = true;
+                segundo.enabled = false;
+                break;
+            case 1:
+                shield = 0;
+                mao.enabled = false;
+                segundo.enabled = true;
+                break;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "ESCUDO1")
+            collision.GetComponent<Animator>().SetBool("PlayerNearby", true);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "ESCUDO1")
+            collision.GetComponent<Animator>().SetBool("PlayerNearby", false);    
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (Input.GetKeyDown(KeyCode.Z) && collision.tag == "ESCUDO1" && !Eativado)
+        {
+            Destroy(collision.gameObject);
+            shield = 0;
+            segundo.enabled = true;
+            mao.enabled = false;
+            inventario[1] = true; // escudo
+        }
+
+    }
 }
 
 

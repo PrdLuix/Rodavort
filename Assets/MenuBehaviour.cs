@@ -26,8 +26,6 @@ public class MenuBehaviour : MonoBehaviour
       ativo = true;
       clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
     }
-  
-    
     void Update()
     {
 
@@ -80,7 +78,7 @@ public class MenuBehaviour : MonoBehaviour
          {
           case 0:
            if (Time.time >= tempo + 1.3f)
-          SceneManager.LoadScene("Act1");
+          SceneManager.LoadScene("Introduction");
           break;
           case 1:
           SceneManager.LoadScene("Credits");

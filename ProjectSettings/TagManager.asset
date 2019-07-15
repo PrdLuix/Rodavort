@@ -14,6 +14,8 @@ TagManager:
   - escudo
   - Armadura
   - ESCUDO1
+  - escudoPegar
+  - "fundoIntrodu\xE7\xE3o"
   layers:
   - Default
   - TransparentFX

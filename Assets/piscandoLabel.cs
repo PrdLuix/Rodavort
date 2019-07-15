@@ -7,6 +7,7 @@ public class piscandoLabel : MonoBehaviour
 {
     [SerializeField] Animator fundo;
     private float tempo;
+    private bool tapado;
     
     void Start()
     {
@@ -15,7 +16,7 @@ public class piscandoLabel : MonoBehaviour
 
     void Update()
     {
-        if(transform.tag != "escudo")
+        if(transform.tag != "escudo" && transform.tag != "fundoIntrodução")
         { 
            if (Input.anyKeyDown && Time.time > 1.9f)
            {

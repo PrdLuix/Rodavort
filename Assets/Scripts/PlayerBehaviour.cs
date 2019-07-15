@@ -9,7 +9,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Image[] canvas = new Image[4];
     [SerializeField] private Animator animator;
     [SerializeField] private Image mao, segundo;
-    [SerializeField] private GameObject mouse,Ecostasv,smoke_1;
+    [SerializeField] private Image[] Texto;
+    [SerializeField] private GameObject mouse,Ecostasv,smoke_1,z,Z;
     private bool[] inventario = new bool[3];
     private GameObject clone,Ecostas;
     public static Vector3 cameraP; 
@@ -31,6 +32,9 @@ public class PlayerBehaviour : MonoBehaviour
             speed = 8;
             Eativado = false;
             EAtivo = false;
+            Texto[2].enabled = false;
+            Texto[1].enabled = false;
+            Texto[0].enabled = false;
             segundo.enabled = false;
     }
     void Update()
@@ -41,6 +45,10 @@ public class PlayerBehaviour : MonoBehaviour
         Movimento();
         AnimEscudo();
     }   
+    void Dialogos()
+    {
+
+    }
     void Iventario()
     {
         if (inventario[1] && !Eativado)
@@ -367,19 +375,27 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "ESCUDO1")
+        if (collision.tag == "escudoPegar")
+        {
             collision.GetComponent<Animator>().SetBool("PlayerNearby", true);
+            Z = Instantiate(z);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "ESCUDO1")
-            collision.GetComponent<Animator>().SetBool("PlayerNearby", false);    
+        
+        if (collision.tag == "escudoPegar") { 
+         collision.GetComponent<Animator>().SetBool("PlayerNearby", false);
+         Destroy(Z);
+        }
+
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (Input.GetKeyDown(KeyCode.Z) && collision.tag == "ESCUDO1" && !Eativado)
+        if (Input.GetKeyDown(KeyCode.Z) && collision.tag == "escudoPegar" && !Eativado)
         {
+            Destroy(Z);
             Destroy(collision.gameObject);
             shield = 0;
             segundo.enabled = true;

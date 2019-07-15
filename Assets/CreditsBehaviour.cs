@@ -11,7 +11,7 @@ public class CreditsBehaviour : MonoBehaviour
     {
         yFinal = 6;
         yInicial = -9;
-        speed = 0.01f;
+        speed = 0.03f;
     }
     [SerializeField] Text text;
     void Update()
@@ -22,7 +22,6 @@ public class CreditsBehaviour : MonoBehaviour
     void SubirTxt()
     {
         text.transform.position += new Vector3(0, speed);
-        print(text.transform.position.y);
         if (text.transform.position.y >= yFinal)
             text.transform.position = new Vector3(0, yInicial);
     }

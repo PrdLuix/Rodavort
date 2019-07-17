@@ -38,6 +38,7 @@ public class TextBehaviour : MonoBehaviour
         if (index < 3 && Input.GetKeyDown(KeyCode.Z))
         {
             speed = 3;
+            inverso = true;
         }
         
         if (!inverso)

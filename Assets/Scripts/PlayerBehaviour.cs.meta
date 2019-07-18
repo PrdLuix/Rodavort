@@ -5,7 +5,14 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - animator: {instanceID: 0}
-  - mouse: {fileID: 1512757626271112410, guid: 1902d70aee75fd640a38cc539f5c4f86, type: 3}
+  - mao: {instanceID: 0}
+  - segundo: {instanceID: 0}
+  - mouse: {instanceID: 0}
+  - Ecostasv: {instanceID: 0}
+  - smoke_1: {instanceID: 0}
+  - z: {instanceID: 0}
+  - Z: {instanceID: 0}
+  - Personagem: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

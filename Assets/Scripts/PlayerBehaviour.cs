@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class PlayerBehaviour : MonoBehaviour
     private int shield, armadura;
     private Vector2 Mouse;
     bool Eativado ,EAtivo,Einverso ,EcostasAtivo;
-    
+    Scene currentScene;
+    string sceneName; 
     void Start()
         {
             //NECESSÁRIO
@@ -26,10 +28,14 @@ public class PlayerBehaviour : MonoBehaviour
             {
               canvas[i].color = new Color(canvas[i].color.r, canvas[i].color.g, canvas[i].color.b, 0.5f);
             }
+            currentScene = SceneManager.GetActiveScene();
+            sceneName = currentScene.name;
             inventario[0] = true;
             shield = 1;
-            armadura = 0;
+            armadura = 0;         
             speed = 8;
+            if (sceneName == "Act2")
+                speed = 4;
             Eativado = false;
             EAtivo = false;
             Texto[2].enabled = false;
@@ -85,7 +91,7 @@ public class PlayerBehaviour : MonoBehaviour
           {
                 
             armadura--;
-            switch (armadura)
+        /*   switch (armadura)
             {
                 case 0:
                 Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);                      
@@ -97,6 +103,7 @@ public class PlayerBehaviour : MonoBehaviour
                 Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,4f),Quaternion.identity),2);
                 break;
             }
+        */
             animator.SetInteger("Armadura", armadura);
           }
         }
@@ -105,7 +112,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) 
        {
             armadura++;
-           switch (armadura)
+          /*  switch (armadura)
             {
                 case 1:
                 Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,0.92f),Quaternion.identity),2);
@@ -117,6 +124,7 @@ public class PlayerBehaviour : MonoBehaviour
                 Destroy(Instantiate(smoke_1, transform.position + new Vector3(-1.9f,4f),Quaternion.identity),2);
                 break;
             }
+          */
             animator.SetInteger("Armadura", armadura);
         }
     }
@@ -341,6 +349,8 @@ public class PlayerBehaviour : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse0))
              {
                  speed = 8;
+                 if (sceneName == "Act2")
+                speed = 4;
                  Destroy(this.clone);
                  Eativado = false;
                  Einverso = false;

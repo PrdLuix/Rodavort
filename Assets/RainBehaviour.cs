@@ -7,7 +7,7 @@ public class RainBehaviour : MonoBehaviour
     float speed;
     void Update()
     {
-        speed = 5 *Time.deltaTime;
+        speed = 10 *Time.deltaTime;
         transform.position += new Vector3(speed,-speed);
     }
 }

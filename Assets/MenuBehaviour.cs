@@ -6,69 +6,62 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehaviour : MonoBehaviour
 {
-    [SerializeField]GameObject blinkFade,arabesco,fundo;
+    [SerializeField]GameObject fundo;
+    [SerializeField]Image[] arabesco;
     [SerializeField]Text S;
     private Vector3 ajuste;
-    private GameObject clone;
+    [SerializeField] private Image blinkFade;
+
     private bool ativo,apertado;
     float tempo;
-    private int index,start_p,credits_p,exit_p;
+    private int index,start_p,credits_p;
 
     private Vector3 CreateV3(float y)=> new Vector3(0,y);
     void Start()
     {
+
       ajuste = new Vector3(0,-0.5f);
       index = 0;
-      start_p = 2;
+      start_p = 2; 
+      credits_p = 0; 
       fundo.SetActive(true);
-      credits_p = 0;
-      exit_p = -2;
       ativo = true;
-      clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
+   
     }
     void Update()
     {
-
+    Desativar();
+    arabesco[index].enabled = true;
         if (!apertado)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 index--;
-                Destroy(clone);
                 if (index == -1)
                     index = 2;
-                ativo = false;
+                    
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 index++;
                 if (index == 3)
-                    index = 0;
-                Destroy(clone);
-                ativo = false;
+                    index = 0;  
             }
+            
+        }    
+        switch(index)
+        {
+            case 0:
+            blinkFade.rectTransform.position = CreateV3(start_p);
+            break;
+            case 1:
+            blinkFade.rectTransform.position = CreateV3(credits_p);
+            break;
+            case 2:
+            blinkFade.rectTransform.position = CreateV3(-2);
+            break;
+            
         }
-      if (!ativo)
-      {
-         switch(index)
-          {
-          case -1:
-          ativo = true;
-          break;
-          case 0:
-          clone = Instantiate(blinkFade, S.transform.position + CreateV3(start_p),Quaternion.identity);
-          arabesco.transform.position = CreateV3(start_p)+ ajuste;
-          goto case -1;
-          case 1:
-          clone = Instantiate(blinkFade, S.transform.position + CreateV3(credits_p),Quaternion.identity);
-          arabesco.transform.position = CreateV3(credits_p)+ ajuste;
-          goto case -1;
-          case 2:
-          clone = Instantiate(blinkFade, S.transform.position + CreateV3(exit_p),Quaternion.identity);
-          arabesco.transform.position = CreateV3(exit_p) + ajuste;
-          goto case -1;
-        }
-      }
       if (Input.GetKeyDown(KeyCode.Z) || apertado)
       {
          if (!apertado) 
@@ -89,6 +82,12 @@ public class MenuBehaviour : MonoBehaviour
           break;
          }  
     }
-      
-    }
+    void Desativar()
+    {
+      for (int i = 0; i < arabesco.Length; i++)
+      {
+          arabesco[i].enabled = false;
+      }
+    }     
+  }
 }

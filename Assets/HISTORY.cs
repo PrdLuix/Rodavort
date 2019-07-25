@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HISTORY : MonoBehaviour
 {
-    [SerializeField] private GameObject personagem,Dormindo;
+    public bool soltaOmenino;
+    [SerializeField] private GameObject personagem,Dormindo, dialogo;
     [SerializeField] private Animator animator;
     float tempo;
 
@@ -12,14 +13,11 @@ public class HISTORY : MonoBehaviour
     {
         tempo = Time.time + 3.3f;
         personagem.GetComponent<SpriteRenderer>().color = new Color (1,1,1,0);
-        
+        personagem.GetComponent<Rigidbody2D>().gravityScale = 0;
+
     }
     void Update()
     {
-       // if (GetComponent<DialogoBehaviour>().dialogos.Count == 0)
-       // {
-        //    Dormindo.GetComponent<SpriteRenderer>().color = new Color (1,1,1,0);
-       // }
         if (Time.time >= tempo)
         {
             animator.SetBool("Acordado",true);
@@ -28,6 +26,9 @@ public class HISTORY : MonoBehaviour
         {
             animator.SetBool("Acordado",false);
         }
-        personagem.transform.position = new Vector3(-14,-3);
+
+        if(!soltaOmenino)
+             personagem.transform.position = new Vector3(-14,-2);
+        else { return; }
     }
 }

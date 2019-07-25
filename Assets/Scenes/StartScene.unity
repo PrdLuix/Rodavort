@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6721ddbd036b04a83826185421ead7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fundo: {fileID: 0}
+  fundo: {fileID: 493893560}
 --- !u!111 &157843565
 Animation:
   m_ObjectHideFlags: 0
@@ -645,6 +645,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &493893560 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2324339209352078259, guid: b17e3ddd1d182d24aab75e51bcd7e3ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2324339209550401660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &620643694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987542367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -103.1, y: 5.9, z: 0.08}
+  m_LocalPosition: {x: -21.8, y: 5.9, z: 0.08}
   m_LocalScale: {x: 889.2946, y: 597.8316, z: 63.630924}
   m_Children: []
   m_Father: {fileID: 0}

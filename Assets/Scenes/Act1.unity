@@ -344,8 +344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064f4ef167da6dd49819237cb3b50bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soltaOmenino: 0
   personagem: {fileID: 883162938}
   Dormindo: {fileID: 2054417088}
+  dialogo: {fileID: 1694903600}
   animator: {fileID: 2054417089}
 --- !u!1 &119371729
 GameObject:
@@ -3500,6 +3502,8 @@ MonoBehaviour:
   nome: {fileID: 1369512508}
   "senten\xE7a": {fileID: 409750391}
   speed: 1
+  counta: 0
+  podeir: 0
 --- !u!4 &1694903602
 Transform:
   m_ObjectHideFlags: 0
@@ -3661,7 +3665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736672085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.05, y: -4.46, z: 0}
+  m_LocalPosition: {x: -14.11, y: -4.53, z: 0}
   m_LocalScale: {x: 1.8306204, y: 1.8306204, z: 1.8306204}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3717,6 +3721,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d3bda24f4801b4f89582ec16e88672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogo: {fileID: 1694903600}
+  personagem: {fileID: 883162938}
+  dormindo: {fileID: 2054417088}
+  Event: {fileID: 113012758}
+  coisas:
+  - {fileID: 1046341566}
+  - {fileID: 1823362790}
+  - {fileID: 764037422}
+  - {fileID: 1584127538}
+  - {fileID: 1506925298}
+  - {fileID: 1698946542}
+  - {fileID: 485076548}
+  - {fileID: 159863298}
 --- !u!114 &1740403437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4176,12 +4193,12 @@ PrefabInstance:
     - target: {fileID: 1736953340161977297, guid: 92e441d9d710aba49aa97e14835a7c87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.81
+      value: -13.54
       objectReference: {fileID: 0}
     - target: {fileID: 1736953340161977297, guid: 92e441d9d710aba49aa97e14835a7c87,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.06
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 1736953340161977297, guid: 92e441d9d710aba49aa97e14835a7c87,
         type: 3}
@@ -4574,12 +4591,12 @@ PrefabInstance:
     - target: {fileID: 8024280343531848157, guid: 8b330b31e2cd1194f86191e482f46df8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.17
+      value: -14.81
       objectReference: {fileID: 0}
     - target: {fileID: 8024280343531848157, guid: 8b330b31e2cd1194f86191e482f46df8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.21
+      value: -2.85
       objectReference: {fileID: 0}
     - target: {fileID: 8024280343531848157, guid: 8b330b31e2cd1194f86191e482f46df8,
         type: 3}
@@ -4701,5 +4718,10 @@ PrefabInstance:
       propertyPath: Texto.Array.data[3]
       value: 
       objectReference: {fileID: 1673331558}
+    - target: {fileID: 8024280343531848158, guid: 8b330b31e2cd1194f86191e482f46df8,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b330b31e2cd1194f86191e482f46df8, type: 3}

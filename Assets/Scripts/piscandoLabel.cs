@@ -18,10 +18,9 @@ public class piscandoLabel : MonoBehaviour
     {
         if(transform.tag != "escudo" && transform.tag != "fundoIntrodução")
         { 
-           if (Input.anyKeyDown && Time.time > 1.9f)
+           if (Input.anyKeyDown && Time.time > 1.0f)
            {
               fundo.SetBool("carregandoScebe", true);
-            
                 tempo = Time.time;
             
            }
@@ -33,7 +32,7 @@ public class piscandoLabel : MonoBehaviour
         }
          if(Input.GetKeyDown(KeyCode.Z) && transform.tag == "escudo")
         {
-            fundo.SetBool("carregandoScebe", true);
+          
         }
     }
 }

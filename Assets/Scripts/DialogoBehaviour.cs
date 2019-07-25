@@ -12,11 +12,14 @@ public class DialogoBehaviour : MonoBehaviour
     [SerializeField] private Image[] Texto;
     [SerializeField] private Text nome, sentença;
     [SerializeField] private float speed;
-    private int counta;
+    public int counta;
+    private float tempo;
     bool execute;
+    public bool podeir;
 
     void Start()
     {
+        tempo = Time.time + 3;
         counta = 0;
         dialogos = new Queue<string>();
         execute = true;
@@ -73,7 +76,7 @@ public class DialogoBehaviour : MonoBehaviour
             Texto[0].enabled = false;
             
         }
-       if(dialogos.Count == 0)
+       if(dialogos.Count == 0 && Time.time >= tempo)
         {
             textAnim.SetBool("iniciarDialogo", false);
             nomeAnim.SetBool("Nome", false);
@@ -81,6 +84,8 @@ public class DialogoBehaviour : MonoBehaviour
             TextBox.enabled = false;
             nome.enabled = false;
             sentença.enabled = false;
+            podeir = true;
+            tempo = 10000000000000000;
             return;
         }
         string todasAsFalas = dialogos.Dequeue();

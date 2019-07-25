@@ -70,7 +70,7 @@ public class CameraBehaviour : MonoBehaviour
         }
         else
         {
-             transform.position =new Vector3(PlayerBehaviour.cameraP.x,PlayerBehaviour.cameraP.y ,cameraZ);
+         transform.position =new Vector3(PlayerBehaviour.cameraP.x,PlayerBehaviour.cameraP.y ,cameraZ);
         }
     }
     void LimiteCasa()

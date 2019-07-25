@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Image[] canvas = new Image[4];
     [SerializeField] private Animator animator;
     [SerializeField] private Image mao, segundo;
-    [SerializeField] private Image[] Texto;
+    [SerializeField] public Image[] Texto;
     [SerializeField] private GameObject mouse,Ecostasv,smoke_1,z,Z;
     private bool[] inventario = new bool[3];
     private GameObject clone,Ecostas;
@@ -38,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
                 speed = 4;
             Eativado = false;
             EAtivo = false;
+            Texto[3].enabled = false;
             Texto[2].enabled = false;
             Texto[1].enabled = false;
             Texto[0].enabled = false;

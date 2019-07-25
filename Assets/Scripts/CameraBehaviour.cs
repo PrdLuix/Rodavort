@@ -1,27 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraBehaviour : MonoBehaviour
 {
     private float xmin,xmax,cameraZ;
     private int scene;
+    private Scene currentScene;
+    private string sceneName;
+    int altura;
  
     void Start()
     {
+        
         scene = 0;
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        if(sceneName == "Act2"){
+         scene = 1;
+         altura = 2;
+        }
+         if (PlayerBehaviour.cameraP.x < xmin)
+        {
+           transform.position = new Vector3(xmin,transform.position.y  ,cameraZ);
+        }
+        else if (PlayerBehaviour.cameraP.x >xmax)
+        {
+           transform.position = new Vector3(xmax,transform.position.y  ,cameraZ);
+        }
+        else
+        {
+             transform.position =new Vector3(PlayerBehaviour.cameraP.x,PlayerBehaviour.cameraP.y ,cameraZ);
+        }
+       
     }
 
     void Update()
-    {
+    {  
      Limite();
+     Limitando();
     }
     void Limite()
     {
-    xmin = -28;
     cameraZ= -10;
-    xmax = 15;
-    
+
     switch (scene)
         {
          case 0:
@@ -35,29 +58,33 @@ public class CameraBehaviour : MonoBehaviour
          break;
         }
     }
-    void LimiteCasa()
+    void Limitando()
     {
-        xmin = -28;
-        cameraZ= -10;
-        xmax = 15;
-
-         if (PlayerBehaviour.cameraP.x < xmin)
+        if (PlayerBehaviour.cameraP.x < xmin)
         {
-           transform.position = new Vector3(xmin,transform.position.y,cameraZ);
+           transform.position = new Vector3(xmin,transform.position.y  ,cameraZ);
         }
         else if (PlayerBehaviour.cameraP.x >xmax)
         {
-           transform.position = new Vector3(xmax,transform.position.y,cameraZ);
+           transform.position = new Vector3(xmax,transform.position.y  ,cameraZ);
         }
         else
         {
-             transform.position =new Vector3(PlayerBehaviour.cameraP.x,PlayerBehaviour.cameraP.y,cameraZ);
+             transform.position =new Vector3(PlayerBehaviour.cameraP.x,PlayerBehaviour.cameraP.y ,cameraZ);
         }
     }
+    void LimiteCasa()
+    {
+        xmin = -28;
+        xmax = 15;
+    }
     void LimiteCena_1()
+    {      
+       xmin = -3;
+       xmax = 41;
+    }
+    void LimiteCena_2()
     {
 
     }
-    void LimiteCena_2()
-    {}
 }

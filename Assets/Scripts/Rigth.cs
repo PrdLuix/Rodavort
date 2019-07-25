@@ -7,6 +7,6 @@ public class Rigth : MonoBehaviour
 
     void Update()
     {
-        transform.position += new Vector3(1f * Time.deltaTime,0);
+        transform.position += new Vector3(9f * Time.deltaTime,0);
     }
 }

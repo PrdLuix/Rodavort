@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class DialogoBehaviour : MonoBehaviour
 {
-    [SerializeField] private Queue<string> dialogos;
+    [SerializeField] public Queue<string> dialogos;
     [SerializeField] private Dialogos falas;
     [SerializeField] private Animator textAnim,falaAnim,nomeAnim;
     [SerializeField] private Image TextBox;
+    [SerializeField] private Image[] Texto;
     [SerializeField] private Text nome, sentença;
     [SerializeField] private float speed;
+    private int counta;
     bool execute;
 
     void Start()
     {
+        counta = 0;
         dialogos = new Queue<string>();
         execute = true;
         nome.enabled = false;
@@ -34,6 +37,23 @@ public class DialogoBehaviour : MonoBehaviour
             NextFrase();
         }
 
+        switch (counta)
+        {
+            case 2:
+            Texto[2].enabled = true;
+            Texto[0].enabled = true;
+            nome.text = "SERVANT:";
+            break;
+            case 5:
+            Texto[2].enabled = false;
+            Texto[1].enabled = true;
+            nome.text = "NOJIR:";
+            counta++;
+            break;
+        }
+          
+        
+
     }
     private void StartDialogo(Dialogos dialogo)
     {
@@ -47,6 +67,12 @@ public class DialogoBehaviour : MonoBehaviour
     }
     private void NextFrase()
     {
+        if(dialogos.Count == 0)
+        {
+             Texto[1].enabled = false;
+            Texto[0].enabled = false;
+            
+        }
        if(dialogos.Count == 0)
         {
             textAnim.SetBool("iniciarDialogo", false);
@@ -64,7 +90,7 @@ public class DialogoBehaviour : MonoBehaviour
     IEnumerator NewDialogo()
     {
         //muda o wairForSeconds para ajustar o tempo de inicio
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         textAnim.SetBool("iniciarDialogo", true);
         TextBox.enabled = true;
         nomeAnim.SetBool("Nome", true);
@@ -77,11 +103,11 @@ public class DialogoBehaviour : MonoBehaviour
     IEnumerator DialogoFinal(string todasAsFalas)
     {
         sentença.text = "";
+        counta++;
         foreach (char letras in todasAsFalas.ToCharArray())
         {
             sentença.text += letras;
             yield return null;
-        }
-
+        }     
     }
 }

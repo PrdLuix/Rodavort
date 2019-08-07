@@ -27,6 +27,7 @@ public class DialogoBehaviour : MonoBehaviour
         sentença.enabled = false;
         sentença.text = "";
         nome.text = "";
+        Texto[2].enabled = false;
     }
     void Update()
     {

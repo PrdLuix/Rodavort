@@ -9,13 +9,15 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject[] Escudos = new GameObject[3];
     [SerializeField] private Image[] canvas = new Image[4];
     [SerializeField] private Animator animator;
-    [SerializeField] private Image mao, segundo;
+    [SerializeField] private Image mao, segundo, panel;
     [SerializeField] public Image[] Texto;
     [SerializeField] private GameObject mouse,Ecostasv,smoke_1,z,Z;
+    
     private bool[] inventario = new bool[3];
     private GameObject clone,Ecostas;
+
     public static Vector3 cameraP; 
-    private float direcX, speed,posicaoR;
+    private float direcX, speed,posicaoR, tempo;
     private int shield, armadura;
     private Vector2 Mouse;
     bool Eativado ,EAtivo,Einverso ,EcostasAtivo;
@@ -23,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     string sceneName; 
     void Start()
         {
+            segundo.enabled = false;
             //NECESSÁRIO
             for (int i = 1; i < canvas.Length; i++)
             {
@@ -38,11 +41,10 @@ public class PlayerBehaviour : MonoBehaviour
                 speed = 4;
             Eativado = false;
             EAtivo = false;
-            Texto[3].enabled = false;
             Texto[2].enabled = false;
             Texto[1].enabled = false;
             Texto[0].enabled = false;
-            segundo.enabled = false;
+            
     }
     void Update()
     {
@@ -51,6 +53,10 @@ public class PlayerBehaviour : MonoBehaviour
         Vida();
         Movimento();
         AnimEscudo();
+        if(panel.GetComponent<painelExit>().opacidade == 1)
+        {
+            SceneManager.LoadScene("Act2");
+        }
     }   
     void Dialogos()
     {
@@ -391,6 +397,10 @@ public class PlayerBehaviour : MonoBehaviour
             collision.GetComponent<Animator>().SetBool("PlayerNearby", true);
             Z = Instantiate(z);
         }
+        else if (collision.tag == "PORTA")
+        {
+          Z = Instantiate(z , z.transform.position + new Vector3(21,8), Quaternion.identity);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -398,6 +408,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.tag == "escudoPegar") { 
          collision.GetComponent<Animator>().SetBool("PlayerNearby", false);
          Destroy(Z);
+        }
+        else if (collision.tag == "PORTA")
+        {
+            Destroy(Z);
         }
 
     }
@@ -412,6 +426,11 @@ public class PlayerBehaviour : MonoBehaviour
             segundo.enabled = true;
             mao.enabled = false;
             inventario[1] = true; // escudo
+        }
+        else if (collision.tag == "PORTA" && Input.GetKeyDown(KeyCode.Z))
+        {
+        panel.GetComponent<painelExit>().podeir = true;    
+        speed = 0;
         }
 
     }

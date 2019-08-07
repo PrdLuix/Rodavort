@@ -33,7 +33,7 @@ public class FadeOut : MonoBehaviour
         if (opacidade > 1)
         {
 
-            for (int i = 0; i < coisas.Length; i++)
+            for (int i = 0; i < coisas.Length -1; i++)
             {
                 coisas[i].enabled = true;
             }

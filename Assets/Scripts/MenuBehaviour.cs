@@ -70,14 +70,12 @@ public class MenuBehaviour : MonoBehaviour
          switch (index)
          {
           case 0:
-           if (Time.time >= tempo + 1.3f)
-          SceneManager.LoadScene("Introduction");
+             SceneManager.LoadScene("Introduction");
           break;
           case 1:
-          SceneManager.LoadScene("Credits");
+             SceneManager.LoadScene("Credits");
           break;
           case 2:
-          if (Time.time >= tempo + 1.3f)
             Application.Quit();
           break;
          }  

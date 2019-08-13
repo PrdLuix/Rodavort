@@ -53,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         Vida();
         Movimento();
         AnimEscudo();
+        if(panel != null)
         if(panel.GetComponent<painelExit>().opacidade == 1)
         {
             SceneManager.LoadScene("Act2");
